@@ -1,0 +1,63 @@
+<div class="container px-5 px-sm-0">
+<div class="row">
+<div class="col-md-3 profile-container">
+  <h2>User info</h2>
+   <%= attachment_image_tag current_user, :profile_image, :fill, 100, 100, format: 'jpeg' %>
+   <table class="table">
+     <tbody>
+       <tr>
+       <th>name</th>
+       <th><%= current_user.name %></th>
+       </tr>
+       <tr>
+         <th>introduction</th>
+         <th><%= current_user.introduction %></th>
+       </tr>
+  </tbody>
+  </table>
+  <div class="row">
+    <% if @user.id == current_user.id %>
+  <%= link_to "profile edit", user_path( current_user.id ), class:"btn btn-outline-secondary btn-block" %>
+  <% end %>
+  </div>
+
+<h2>New Book</h1>
+<%= form_with model: @book, url: books_path, local:true, scope: :book do |f| %>
+  <div class="form-group">
+    <label>Title</label>
+  <%= f.text_field :title, class:"form-control book_title" %>
+  </div>
+  <div class="form-group">
+  <label>opinion</label>
+  <%= f.text_area :body, class:"form-control book_body"%>
+  </div>
+  <div class="form-group">
+  <%= f.submit 'create', class:"btn btn-success" %>
+  </div>
+<% end %>
+</div>
+
+<div class="col-md-8 offset-md-1">
+  <h2>Users</h2>
+  <% @users.each do |f| %>
+<table class="table table-hover table-inverse" style="table-layout: fixed;">
+  <thead>
+    <tr>
+      <th>image</th>
+      <th>name</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= attachment_image_tag f, :profile_image, :fill, 60, 60, fallback: "cat.jpg" %></td>
+      <td><%= f.name %></td>
+      <td><%= link_to "show", user_path( f.id) %></td>
+    </tr>
+  </tbody>
+  </table>
+<% end %>
+</div>
+</div>
+</div>
+</div>
