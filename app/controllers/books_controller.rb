@@ -20,8 +20,6 @@ before_action :authenticate_user!
 
   def show
     @book = Book.find(params[:id])
-    @user = User.new
-    @books = Book.all
   end
 
   def edit
