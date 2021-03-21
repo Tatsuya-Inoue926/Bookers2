@@ -1,8 +1,16 @@
+
+
 <div class="ontainer px-5 px-sm-0">
   <div class="row">
     <div class="col-md-3 profile-container">
   <h2>User info</h2>
-  <%= attachment_image_tag current_user, :profile_image, :fill, 100, 100, format: 'jpeg' %>
+  <% if @book.errors.any? %>
+  <%= @book.errors.count %>件のエラーが発生しました
+  <% @book.errors.full_messages.each do |e| %>
+    <%= e %>
+  <% end %>
+<% end %>
+  <%= attachment_image_tag current_user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "cat.jpg", size: '100x100' %>
   <table class="table">
      <tbody>
        <tr>
@@ -48,7 +56,7 @@
   </thead>
   <tbody>
     <tr>
-      <td><%= link_to user_path( b.user ) do %><%= attachment_image_tag b.user, :profile_image, :fill, 60, 60, fallback: "cat.jpg" %><% end %></td>
+      <td><%= link_to user_path( b.user ) do %><%= attachment_image_tag b.user, :profile_image, :fill, 60, 60, fallback: "cat.jpg", size: '60x60' %><% end %></td>
 
       <td><%= link_to book_path( b.id ) do %><%= b.title %><% end %></td>
       <td><%= b.body %></td>

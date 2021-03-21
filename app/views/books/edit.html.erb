@@ -2,6 +2,12 @@
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
 <h2>Editing Book</h2>
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>件のエラーが発生しました
+  <% @book.errors.full_messages.each do |e| %>
+    <%= e %>
+  <% end %>
+<% end %>
 <%= form_with model:@book, local:true do |f| %>
 <div class="form-group">
   <label for="inputtitle">Title</label>

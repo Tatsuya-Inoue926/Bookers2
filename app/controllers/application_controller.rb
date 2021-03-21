@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
       if current_user
+        flash[:notice] = "welcome bookers2 successfully."
         user_path(resource.id)  #　指定したいパスに変更
       end
   end
