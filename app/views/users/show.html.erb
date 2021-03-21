@@ -22,7 +22,9 @@
   </tbody>
   </table>
   <div class="row">
-  <%= link_to "profile edit", edit_user_path( @user.id ), class:"btn btn-outline-secondary btn-block" %>
+  <%= link_to edit_user_path( @user.id ), class:"btn btn-outline-secondary btn-block" do %>
+  <i class="fas fa-user-cog"></i>
+  <% end %>
   </div>
 
 <h2>New book</h1>

@@ -5,6 +5,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <script src="https://kit.fontawesome.com/c770e4a3a5.js" crossorigin="anonymous"></script>
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -20,29 +22,29 @@
         <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
         <li class="nav-item">
-          <%= link_to 'Home', user_path(current_user.id), class: 'nav-link text-white' %>
+          <%= link_to 'Home', user_path(current_user.id), class: 'nav-link text-white fas fa-home' %>
         </li>
          <li class="nav-item">
-          <%= link_to 'Users', users_path, class: 'nav-link text-white' %>
+          <%= link_to 'Users', users_path, class: 'nav-link text-white fas fa-users' %>
         </li>
         <li class="nav-item">
-          <%= link_to 'Books', books_path, class: 'nav-link text-white' %>
+          <%= link_to 'Books', books_path, class: 'nav-link text-white fas fa-book-open' %>
         </li>
         <li class="nav-item">
-          <%= link_to "logout", destroy_user_session_path, method: :delete, class: 'nav-link text-white' %>
+          <%= link_to "logout", destroy_user_session_path, method: :delete, class: 'nav-link text-white fas fa-sign-out-alt' %>
         </li>
         <% else %>
         <li class="nav-item">
-          <%= link_to "Home", root_path, class: 'nav-link text-white' %>
+          <%= link_to "Home", root_path, class: 'nav-link text-white fas fa-home' %>
         </li>
         <li class="nav-item">
-          <%= link_to "About", home_about_path, class: 'nav-link text-white' %>
+          <%= link_to "About", home_about_path, class: 'nav-link text-white fas fa-link' %>
         </li>
          <li class="nav-item">
-          <%= link_to "sign up", new_user_registration_path, class: 'nav-link text-white' %>
+          <%= link_to "sign up", new_user_registration_path, class: 'nav-link text-white fas fa-user-plus' %>
         </li>
         <li class="nav-item">
-          <%= link_to "login", new_user_session_path, class: 'nav-link text-white' %>
+          <%= link_to "login", new_user_session_path, class: 'nav-link text-white fas fa-sign-in-alt' %>
         </li>
         <% end %>
         </ul>
@@ -50,5 +52,6 @@
     </div>
   </nav>
     <%= yield %>
+  <footer>CopyRight Infratop.inc</footer>
   </body>
 </html>
