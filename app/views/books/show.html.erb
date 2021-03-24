@@ -8,7 +8,7 @@
 <div class="row">
 <div class="col-md-3 profile-container">
   <h2>User info</h2>
-   <%= attachment_image_tag @book.user, :profile_image, :fill, 100, 100, format: 'jpeg' %>
+   <%= attachment_image_tag @book.user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "cat.jpg", size: '100x100' %>
    <table class="table">
      <tbody>
        <tr>
@@ -50,7 +50,7 @@
 <table class="table table-hover table-inverse" style="table-layout: fixed;">
   <tbody>
     <tr>
-      <td><%= link_to user_path( @book.user) do %><%= attachment_image_tag @book.user, :profile_image, :fill, 60, 60, fallback: "cat.jpg" %><p><%= @book.user.name %></p><% end %><!--なんでこれで表示されるのか分からない--></td><!--なんでこれでuser_idに合ったnameを取れるのか-->
+      <td><%= link_to user_path( @book.user) do %><%= attachment_image_tag @book.user, :profile_image, :fill, 60, 60, fallback: "cat.jpg" ,size: '60x60'%><p><%= @book.user.name %></p><% end %><!--なんでこれで表示されるのか分からない--></td><!--なんでこれでuser_idに合ったnameを取れるのか-->
       <td><%= @book.title %></td>
       <td><%= @book.body %></td>
       <td>
